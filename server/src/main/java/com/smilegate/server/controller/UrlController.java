@@ -4,6 +4,7 @@ import com.smilegate.server.controller.dto.ShortenUrlRequest;
 import com.smilegate.server.controller.dto.ShortenUrlResponse;
 import com.smilegate.server.service.UrlService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +18,10 @@ public class UrlController {
 
     private final UrlService urlService;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/shorten")
     public ShortenUrlResponse shortenUrl(@Valid @RequestBody final ShortenUrlRequest dto){
+        System.out.println(dto.getOriginUrl());
         String shortUrl = urlService.shortenUrl(dto);
         return ShortenUrlResponse.builder()
                 .shortUrl(shortUrl)
