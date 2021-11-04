@@ -6,7 +6,9 @@ import com.smilegate.server.service.UrlService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -23,8 +25,9 @@ public class UrlController {
                 .build();
     }
 
-    @GetMapping("/{url}")
-    public String redirectToOriginUrl(@PathVariable("url") String url){
-        return "origin url";
+    @GetMapping("/{shortPath}")
+    public void redirectToOriginUrl(@PathVariable("shortPath") String shortPath, HttpServletResponse httpServletResponse) throws IOException {
+        String originUrl = urlService.getOriginUrl(shortPath);
+        httpServletResponse.sendRedirect(originUrl);
     }
 }

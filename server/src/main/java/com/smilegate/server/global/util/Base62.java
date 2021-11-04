@@ -47,9 +47,11 @@ public class Base62 implements EncoderUtil, DecoderUtil {
         Collections.reverse(chars);
 
         int res = 0;
+        int i = 0;
         for(char c: chars){
             int num = CODES.get(c);
-            res += num * BASE;
+            res += num * Math.pow(BASE, i);
+            i += 1;
         }
 
         return String.valueOf(res);

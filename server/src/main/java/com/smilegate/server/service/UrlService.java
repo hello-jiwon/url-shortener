@@ -38,4 +38,13 @@ public class UrlService {
         return urlGenerator.generateUrl(encodedPath);
     }
 
+    public String getOriginUrl(String shortPath){
+        String id = decoder.decode(shortPath);
+
+        Optional<Url> url = urlRepository.findById(Long.parseLong(id));
+        if (!url.isPresent()){
+            throw new IllegalArgumentException("존재하지 않는 URL입니다.");
+        }
+        return url.get().getOriginUrl();
+    }
 }
