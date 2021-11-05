@@ -21,7 +21,6 @@ public class UrlController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/shorten")
     public ShortenUrlResponse shortenUrl(@Valid @RequestBody final ShortenUrlRequest dto){
-        System.out.println(dto.getOriginUrl());
         String shortUrl = urlService.shortenUrl(dto);
         return ShortenUrlResponse.builder()
                 .shortUrl(shortUrl)
