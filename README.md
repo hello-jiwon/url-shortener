@@ -11,3 +11,11 @@ url 단축기 웹서비스
 - `SpringBoot`
 - `JPA`
 - `mysql`
+- `mustache`
+
+## ERD
+![image](https://user-images.githubusercontent.com/79824919/140449874-dad5472e-d84d-49f7-b053-782ca2138ad0.png)
+
+
+## 결과 스크린샷
+![image](https://user-images.githubusercontent.com/79824919/140448961-3f1eaaad-2fd4-4c93-97f9-80c86c2963e3.png)
